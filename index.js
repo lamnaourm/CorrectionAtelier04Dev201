@@ -48,6 +48,31 @@ app.get("/produits/id/:id", (req, res) => {
     res.status(202).json({id, ...JSON.parse(data)});
 })
 
+app.get("/produits/famille/:famille", (req, res) => {
+
+    const famille = req.params.famille;
+    const filesnames = fs.readdirSync(directory); 
+    const prods = []; 
+
+    filesnames.forEach(file => {
+        const data = fs.readFileSync(path.join(directory, file), 'utf8')
+        const produit = JSON.parse(data); 
+        
+        if(produit.famille === famille)
+            prods.push({id:file.split('.')[0], ...produit})
+    })
+
+    res.status(202).json(prods);
+});
+
+app.put("/produits/:id", (req, res) => {
+
+});
+
+app.delete("/produits/:id", (req, res) => {
+
+});
+
 app.listen(port, () => {
     console.log('Serveur lance ....');
 })
