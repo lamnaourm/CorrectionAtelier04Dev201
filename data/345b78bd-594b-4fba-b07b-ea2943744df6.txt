@@ -1,0 +1,1 @@
+{"nom":"produit 1","description":"Description du produit 1","famille":"Epicerie","image":"image1.jpg","prix":120.3}
