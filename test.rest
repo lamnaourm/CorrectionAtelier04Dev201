@@ -9,4 +9,19 @@ Content-Type: application/json
     "prix": 120.3
 }
 
+###
+PUT http://localhost:3000/produits/5d7313ac-6771-411d-bcbf-51e7246f02a0
+Content-Type: application/json
+
+{
+    "nom":"sdsdsd",
+    "description":"dsdsdsd",
+    "famille": "zazaz",
+    "image": "image200.jpg",
+    "prix": 999.3
+}
+
+###
+DELETE http://localhost:3000/produits/5d7313ac-6771-411d-bcbf-51e7246f02a0
+
 

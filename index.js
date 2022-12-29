@@ -57,7 +57,7 @@ app.get("/produits/famille/:famille", (req, res) => {
     filesnames.forEach(file => {
         const data = fs.readFileSync(path.join(directory, file), 'utf8')
         const produit = JSON.parse(data); 
-        
+
         if(produit.famille === famille)
             prods.push({id:file.split('.')[0], ...produit})
     })
@@ -67,10 +67,26 @@ app.get("/produits/famille/:famille", (req, res) => {
 
 app.put("/produits/:id", (req, res) => {
 
+    const id = req.params.id;
+
+    if(!fs.existsSync(path.join(directory, `${id}.txt`))){
+        return res.sendStatus(404);
+    }
+
+    fs.writeFileSync(path.join(directory, `${id}.txt`), JSON.stringify(req.body)); 
+    res.sendStatus(202);
 });
 
 app.delete("/produits/:id", (req, res) => {
 
+    const id = req.params.id;
+
+    if(!fs.existsSync(path.join(directory, `${id}.txt`))){
+        return res.sendStatus(404);
+    }
+
+    fs.unlinkSync(path.join(directory, `${id}.txt`));
+    res.sendStatus(202)
 });
 
 app.listen(port, () => {

@@ -1,1 +1,0 @@
-{"nom":"produit 3","description":"Description du produit 3","famille":"Famille 2","image":"image3.jpg","prix":33.3}
